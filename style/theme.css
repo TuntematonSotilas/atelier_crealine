@@ -66,6 +66,10 @@
   --destructive: oklch(0.704 0.191 22.216);
 }
 
+@theme {
+  --font-sans: 'Amarna', 'sans-serif';
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
