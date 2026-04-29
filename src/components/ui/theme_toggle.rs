@@ -12,7 +12,8 @@ pub fn ThemeToggle() -> impl IntoView {
             {"
             .theme__toggle_transition {
             -webkit-tap-highlight-color: transparent;
-            
+            margin-top: 8px;
+
             svg path {
             transform-origin: center;
             transition: all .6s ease;

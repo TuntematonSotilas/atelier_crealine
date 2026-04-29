@@ -31,6 +31,7 @@ impl ThemeMode {
         Effect::new(move |_| {
             let initial = Self::get_storage_state().unwrap_or(Self::prefers_dark_mode());
             theme_mode.state.set(initial);
+            Self::set_html_class(initial);
         });
 
         theme_mode
@@ -40,36 +41,13 @@ impl ThemeMode {
         self.state.update(|state| {
             *state = !*state;
             Self::set_storage_state(*state);
+            Self::set_html_class(*state);
         });
-    }
-
-    pub fn set_dark(&self) {
-        self.set(true);
-    }
-
-    pub fn set_light(&self) {
-        self.set(false);
-    }
-
-    /// - `dark`: Set to `true` for dark mode, and `false` for light mode.
-    pub fn set(&self, dark: bool) {
-        self.state.set(dark);
-        Self::set_storage_state(dark);
     }
 
     #[must_use]
     pub fn get(&self) -> bool {
         self.state.get()
-    }
-
-    #[must_use]
-    pub fn is_dark(&self) -> bool {
-        self.state.get()
-    }
-
-    #[must_use]
-    pub fn is_light(&self) -> bool {
-        !self.state.get()
     }
 
     /* ========================================================== */
@@ -103,6 +81,18 @@ impl ThemeMode {
     fn set_storage_state(state: bool) {
         if let Some(storage) = Self::get_storage() {
             storage.set(LOCALSTORAGE_KEY, state.to_string().as_str()).ok();
+        }
+    }
+
+    /// Adds or removes the "dark" class on the HTML element based on the dark mode state.
+    fn set_html_class(dark: bool) {
+        if let Some(document) = window().document() {
+            let class_list = document.document_element().unwrap().class_list();
+            if dark {
+                class_list.add_1("dark").ok();
+            } else {
+                class_list.remove_1("dark").ok();
+            }
         }
     }
 }

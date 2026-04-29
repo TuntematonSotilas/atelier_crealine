@@ -1,5 +1,4 @@
 use leptos::prelude::*;
-use leptos_router::components::A;
 
 /// Renders the "Apéros Créatifs (Adultes)" page.
 #[component]
@@ -34,9 +33,6 @@ pub fn AperosCreatifs() -> impl IntoView {
                     <p>"Participation : Tarif à définir par apéro"</p>
                 </section>
                 
-                <div class="atelier-nav">
-                    <A href="/services">"← Retour aux services"</A>
-                </div>
             </div>
         </div>
     }

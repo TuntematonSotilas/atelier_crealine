@@ -1,5 +1,4 @@
 use leptos::prelude::*;
-use leptos_router::components::A;
 
 /// Renders the "Ateliers Créatifs pour Tous" page.
 #[component]
@@ -32,9 +31,6 @@ pub fn AteliersCreatifsPourTous() -> impl IntoView {
                     <p>"Calendrier : Toute l'année"</p>
                 </section>
                 
-                <div class="atelier-nav">
-                    <A href="/services">"← Retour aux services"</A>
-                </div>
             </div>
         </div>
     }

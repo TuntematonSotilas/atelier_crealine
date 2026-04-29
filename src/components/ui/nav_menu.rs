@@ -29,11 +29,11 @@ pub fn NavMenu() -> impl IntoView {
                         <NavigationMenuTrigger>"Services"</NavigationMenuTrigger>
                         <NavigationMenuContent>
                             <ul class="grid gap-3 p-0 md:grid-cols-2 w-[400px] md:w-[500px] lg:w-[600px]">
+                                <ListItem href="/services/creatifs-pour-tous" title="Ateliers créatifs pour tous"/>
+                                <ListItem href="/services/parents-enfants" title="Ateliers parents-enfants"/>
+                                <ListItem href="/services/aperos-creatifs" title="Apéros créatifs (adultes)"/>
                                 <ListItem href="/services/hors-les-murs" title="Ateliers hors les murs"/>
                                 <ListItem href="/services/en-institution" title="Ateliers en institution"/>
-                                <ListItem href="/services/parents-enfants" title="Ateliers parents-enfants"/>
-                                <ListItem href="/services/creatifs-pour-tous" title="Ateliers créatifs pour tous"/>
-                                <ListItem href="/services/aperos-creatifs" title="Apéros Créatifs (adultes)"/>
                             </ul>
                         </NavigationMenuContent>
                     </NavigationMenuItem>

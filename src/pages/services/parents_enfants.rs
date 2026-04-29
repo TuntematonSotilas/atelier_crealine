@@ -1,5 +1,4 @@
 use leptos::prelude::*;
-use leptos_router::components::A;
 
 /// Renders the "Ateliers Parents-Enfants" page.
 #[component]
@@ -33,9 +32,6 @@ pub fn AteliersParentsEnfants() -> impl IntoView {
                     <p>"Nombre limité de places pour une ambiance conviviale"</p>
                 </section>
                 
-                <div class="atelier-nav">
-                    <A href="/services">"← Retour aux services"</A>
-                </div>
             </div>
         </div>
     }

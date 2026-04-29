@@ -1,5 +1,4 @@
 use leptos::prelude::*;
-use leptos_router::components::A;
 
 /// Renders the "Ateliers Hors les Murs" page.
 #[component]
@@ -32,9 +31,6 @@ pub fn AteliersHorsLesMurs() -> impl IntoView {
                     <p>"Saison : Idéal au printemps et en été"</p>
                 </section>
                 
-                <div class="atelier-nav">
-                    <A href="/services">"← Retour aux services"</A>
-                </div>
             </div>
         </div>
     }

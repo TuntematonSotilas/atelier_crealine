@@ -1,5 +1,4 @@
 use leptos::prelude::*;
-use leptos_router::components::A;
 
 /// Renders the "Ateliers en Institution" page.
 #[component]
@@ -33,9 +32,6 @@ pub fn AteliersEnInstitution() -> impl IntoView {
                     <p>"Lieu : Au sein de votre institution"</p>
                 </section>
                 
-                <div class="atelier-nav">
-                    <A href="/services">"← Retour aux services"</A>
-                </div>
             </div>
         </div>
     }
