@@ -6,13 +6,13 @@ use leptos_router::{
 
 use crate::pages::home::HomePage;
 use crate::pages::not_found::NotFound;
-use crate::pages::services::ServicesPage;
 use crate::pages::qui_suis_je::QuiSuisJePage;
 use crate::pages::newsletter::NewsletterPage;
-use crate::pages::ateliers::{
-    AteliersHorsLesAu, AteliersEnInstitution, AteliersParentsEnfants,
-    AteliersCreaifsPourTous, AperosCreatifs,
-};
+use crate::pages::services::hors_les_murs::AteliersHorsLesMurs;
+use crate::pages::services::en_institution::AteliersEnInstitution;
+use crate::pages::services::aperos_creatifs::AperosCreatifs;
+use crate::pages::services::ateliers_pour_tous::AteliersCreatifsPourTous;
+use crate::pages::services::parents_enfants::AteliersParentsEnfants;
 use crate::components::ui::nav_menu::NavMenu;
 
 #[component]
@@ -34,11 +34,10 @@ pub fn App() -> impl IntoView {
             <main>
                 <Routes fallback=move || "Not found.">
                     <Route path=StaticSegment("") view=HomePage/>
-                    <Route path=path!("/services") view=ServicesPage/>
-                    <Route path=path!("/services/hors-les-murs") view=AteliersHorsLesAu/>
+                    <Route path=path!("/services/hors-les-murs") view=AteliersHorsLesMurs/>
                     <Route path=path!("/services/en-institution") view=AteliersEnInstitution/>
                     <Route path=path!("/services/parents-enfants") view=AteliersParentsEnfants/>
-                    <Route path=path!("/services/creatifs-pour-tous") view=AteliersCreaifsPourTous/>
+                    <Route path=path!("/services/creatifs-pour-tous") view=AteliersCreatifsPourTous/>
                     <Route path=path!("/services/aperos-creatifs") view=AperosCreatifs/>
                     <Route path=path!("/qui-suis-je") view=QuiSuisJePage/>
                     <Route path=path!("/newsletter") view=NewsletterPage/>

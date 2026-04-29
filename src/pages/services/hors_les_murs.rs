@@ -3,7 +3,7 @@ use leptos_router::components::A;
 
 /// Renders the "Ateliers Hors les Murs" page.
 #[component]
-pub fn AteliersHorsLesAu() -> impl IntoView {
+pub fn AteliersHorsLesMurs() -> impl IntoView {
     view! {
         <div class="atelier-page">
             <h1>"Ateliers Hors les Murs"</h1>
