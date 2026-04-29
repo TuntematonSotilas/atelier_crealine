@@ -4,7 +4,7 @@ use leptos_router::{
     StaticSegment, WildcardSegment, components::{Route, Router, Routes}, path
 };
 
-use crate::pages::home::HomePage;
+use crate::{components::hooks::use_theme_mode::ThemeMode, pages::home::HomePage};
 use crate::pages::not_found::NotFound;
 use crate::pages::qui_suis_je::QuiSuisJePage;
 use crate::pages::newsletter::NewsletterPage;
@@ -19,6 +19,7 @@ use crate::components::ui::nav_menu::NavMenu;
 pub fn App() -> impl IntoView {
     // Provides context that manages stylesheets, titles, meta tags, etc.
     provide_meta_context();
+    provide_context(ThemeMode::init());
 
     view! {
         // injects a stylesheet into the document <head>

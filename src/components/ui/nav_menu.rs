@@ -1,5 +1,5 @@
 use leptos::prelude::*;
-use crate::components::ui::navigation_menu::*;
+use crate::components::ui::{navigation_menu::*, theme_toggle::ThemeToggle};
 
 
 #[component]
@@ -20,6 +20,11 @@ pub fn NavMenu() -> impl IntoView {
         <div class="flex justify-center items-start py-8 min-h-[350px]">
             <NavigationMenu>
                 <NavigationMenuList>
+
+                    <NavigationMenuItem>
+                        <img src="/assets/icon.svg" alt="Logo" class="w-8 h-8 mr-2"/>
+                    </NavigationMenuItem>
+
                     <NavigationMenuItem>
                         <NavigationMenuTrigger>"Services"</NavigationMenuTrigger>
                         <NavigationMenuContent>
@@ -43,6 +48,10 @@ pub fn NavMenu() -> impl IntoView {
                         <NavigationMenuLink class=navigation_menu_trigger_style() href="/newsletter">
                             "Newsletter"
                         </NavigationMenuLink>
+                    </NavigationMenuItem>
+
+                     <NavigationMenuItem>
+                        <ThemeToggle/>
                     </NavigationMenuItem>
 
                 </NavigationMenuList>
