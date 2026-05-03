@@ -1,76 +1,55 @@
 use leptos::prelude::*;
 
+use crate::components::ui::{button::{Button, ButtonSize}, input::Input};
+
 /// Renders the newsletter subscription page.
 #[component]
 pub fn NewsletterPage() -> impl IntoView {
-    let email = RwSignal::new(String::new());
-    let submitted = RwSignal::new(false);
     
     view! {
         <div>
-            <h1>"Notre Newsletter"</h1>
+            <h1>Notre Newsletter</h1>
+
+            <section>
+                <h2>"Restez Informé"</h2>
+                <p>"Inscrivez-vous à notre newsletter pour recevoir :"</p>
+                <ul>
+                    <li>"Les dates et horaires de nos nouveaux ateliers"</li>
+                    <li>"Des conseils créatifs et des astuces DIY"</li>
+                    <li>"Les actualités et les projets spéciaux"</li>
+                    <li>"Des offres et promotions exclusives"</li>
+                </ul>
+            </section>
             
-            <div class="newsletter-content">
-                <section class="newsletter-section">
-                    <h2>"Restez Informé"</h2>
-                    <p>"Inscrivez-vous à notre newsletter pour recevoir :"</p>
-                    <ul>
-                        <li>"Les dates et horaires de nos nouveaux ateliers"</li>
-                        <li>"Des conseils créatifs et des astuces DIY"</li>
-                        <li>"Les actualités et les projets spéciaux"</li>
-                        <li>"Des offres et promotions exclusives"</li>
-                    </ul>
-                </section>
-                
-                <section class="newsletter-form-section">
-                    <h2>"S'inscrire"</h2>
-                    <Show when=move || submitted.get()>
-                        <div class="success-message">
-                            <p>"Merci ! Votre inscription a bien été reçue."</p>
-                        </div>
-                    </Show>
-                    <Show when=move || !submitted.get()>
-                        <form on:submit=move |e: leptos::ev::SubmitEvent| {
-                            e.prevent_default();
-                            if !email.get().is_empty() {
-                                *submitted.write() = true;
-                                *email.write() = String::new();
-                                
-                                // Reset message after 5 seconds
-                                let _ = set_timeout(
-                                    move || {
-                                        *submitted.write() = false;
-                                    },
-                                    std::time::Duration::from_secs(5)
-                                );
-                            }
-                        }>
-                            <div class="form-group">
-                                <label for="email">"Votre adresse e-mail"</label>
-                                <input
-                                    id="email"
-                                    type="email"
-                                    placeholder="vous@example.com"
-                                    on:input=move |ev| {
-                                        let val = event_target_value(&ev);
-                                        *email.write() = val;
-                                    }
-                                    prop:value=email
-                                    required
-                                />
-                            </div>
-                            <button type="submit" class="btn-submit">
-                                "S'inscrire"
-                            </button>
-                        </form>
-                    </Show>
-                </section>
-                
-                <section class="newsletter-section">
-                    <h2>"Votre Confidentialité"</h2>
-                    <p>"Nous respectons votre vie privée. Vos données ne seront jamais partagées à des tiers. Vous pouvez vous désabonner à tout moment."</p>
-                </section>
-            </div>
+            <form class="row-start-1 pb-8 text-sm border-b md:col-span-2 md:border-none lg:col-span-1">
+                <div class="space-y-4">
+                    <label
+                        data-slot="label"
+                        class="block text-sm font-medium leading-none select-none peer-disabled:cursor-not-allowed peer-disabled:opacity-50 group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50"
+                        for="mail"
+                    >
+                        Newsletter
+                    </label>
+                    <div class="flex gap-2">
+                        <Input
+                            attr:r#type="email"
+                            attr:id="mail"
+                            attr:placeholder="Your email"
+                            attr:name="mail"
+                            class="h-8 text-sm"
+                        />
+                        <Button size=ButtonSize::Sm>Submit</Button>
+                    </div>
+                    <span class="block text-sm text-muted-foreground">"Don't miss any update!"</span>
+                </div>
+            </form>
+        
+
+            <section>
+                <h2>"Votre Confidentialité"</h2>
+                <p>"Nous respectons votre vie privée. Vos données ne seront jamais partagées à des tiers. Vous pouvez vous désabonner à tout moment."</p>
+            </section>
+
         </div>
     }
 }

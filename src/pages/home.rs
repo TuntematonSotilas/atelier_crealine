@@ -5,7 +5,7 @@ use leptos::prelude::*;
 pub fn HomePage() -> impl IntoView {
     view! {
         <div>
-            <h1>"Welcome"</h1>
+            <h1>Welcome</h1>
         </div>
     }
 }

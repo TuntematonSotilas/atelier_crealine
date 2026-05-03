@@ -4,7 +4,8 @@ use leptos_router::{
     StaticSegment, WildcardSegment, components::{Route, Router, Routes}, path
 };
 
-use crate::{components::hooks::use_theme_mode::ThemeMode, pages::home::HomePage};
+use crate::{components::hooks::use_theme_mode::ThemeMode, pages::mentions_legales::MentionsLegales};
+use crate::pages::home::HomePage;
 use crate::pages::not_found::NotFound;
 use crate::pages::qui_suis_je::QuiSuisJePage;
 use crate::pages::newsletter::NewsletterPage;
@@ -13,7 +14,8 @@ use crate::pages::services::en_institution::AteliersEnInstitution;
 use crate::pages::services::aperos_creatifs::AperosCreatifs;
 use crate::pages::services::ateliers_pour_tous::AteliersCreatifsPourTous;
 use crate::pages::services::parents_enfants::AteliersParentsEnfants;
-use crate::components::ui::nav_menu::NavMenu;
+use crate::components::blocks::nav_menu::NavMenu;
+use crate::components::blocks::footer_block::FooterBlock;
 
 #[component]
 pub fn App() -> impl IntoView {
@@ -32,7 +34,7 @@ pub fn App() -> impl IntoView {
         // content for this welcome page
         <Router>
             <NavMenu/>
-            <main class="container mx-auto px-4 py-8">
+            <main class="container mx-auto px-4 py-8 min-h-[72vh]">
                 <Routes fallback=move || "Not found.">
                     <Route path=StaticSegment("") view=HomePage/>
                     <Route path=path!("/services/hors-les-murs") view=AteliersHorsLesMurs/>
@@ -41,10 +43,12 @@ pub fn App() -> impl IntoView {
                     <Route path=path!("/services/creatifs-pour-tous") view=AteliersCreatifsPourTous/>
                     <Route path=path!("/services/aperos-creatifs") view=AperosCreatifs/>
                     <Route path=path!("/qui-suis-je") view=QuiSuisJePage/>
+                    <Route path=path!("/mentions-legales") view=MentionsLegales/>
                     <Route path=path!("/newsletter") view=NewsletterPage/>
                     <Route path=WildcardSegment("any") view=NotFound/>
                 </Routes>
             </main>
+            <FooterBlock/>
         </Router>
     }
 }

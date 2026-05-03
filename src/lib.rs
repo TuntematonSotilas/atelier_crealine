@@ -1,4 +1,4 @@
-mod components;
+pub mod components;
 pub mod app;
 pub mod pages;
 

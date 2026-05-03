@@ -20,6 +20,7 @@ wasm-bindgen = "0.2.106"
 web-sys = { version = "0.3.97" , features = ["MediaQueryList", "Window", "Storage"] }
 tw_merge = { version = "0.1.21", features = ["variant"] }
 icons = { version = "0.18.2", features = ["leptos"] }
+strum = "0.28.0"
 
 [features]
 csr = ["leptos/csr"]
