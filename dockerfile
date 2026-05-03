@@ -1,12 +1,10 @@
 # Get started with a build env with Rust nightly
-FROM rustlang/rust:nightly-alpine AS builder
+FROM rust:1.95.0-alpine3.22 AS builder
 
 RUN apk update && \
-    apk add --no-cache bash curl npm libc-dev binaryen
+    apk add --no-cache bash curl npm libc-dev binaryen perl make
 
 RUN npm install -g sass
-
-RUN curl --proto '=https' --tlsv1.3 -LsSf https://github.com/leptos-rs/cargo-leptos/releases/latest/download/cargo-leptos-installer.sh | sh
 
 # Add the WASM target
 RUN rustup target add wasm32-unknown-unknown
@@ -14,13 +12,17 @@ RUN rustup target add wasm32-unknown-unknown
 WORKDIR /work
 COPY . .
 
+RUN cargo install --locked cargo-leptos
+
+RUN npm i
+
 RUN cargo leptos build --release -vv
 
-FROM rustlang/rust:nightly-alpine AS runner
+FROM rust:1.95.0-alpine3.22 AS runner
 
 WORKDIR /app
 
-COPY --from=builder /work/target/release/leptos_start /app/
+COPY --from=builder /work/target/release/atelier_crealine /app/
 COPY --from=builder /work/target/site /app/site
 COPY --from=builder /work/Cargo.toml /app/
 
@@ -29,4 +31,4 @@ ENV LEPTOS_SITE_ADDR="0.0.0.0:8080"
 ENV LEPTOS_SITE_ROOT=./site
 EXPOSE 8080
 
-CMD ["/app/leptos_start"]
+CMD ["/app/atelier_crealine"]
