@@ -1,5 +1,5 @@
 use leptos::prelude::*;
-use leptos_meta::{provide_meta_context, Stylesheet, Title};
+use leptos_meta::{Meta, Stylesheet, Title, provide_meta_context};
 use leptos_router::{
     StaticSegment, WildcardSegment, components::{Route, Router, Routes}, path
 };
@@ -30,6 +30,13 @@ pub fn App() -> impl IntoView {
 
         // sets the document title
         <Title text="Atelier Créaline"/>
+
+        <Meta property="og:title" content="Atelier Créaline" />
+        <Meta property="og:url" content="https://atelier-crealine.onrender.com" />
+        <Meta property="og:image" content="https://atelier-crealine.onrender.com/assets/meta.png" />
+        <Meta property="og:description" content="Médiation artistique en relation d'aide." />
+        <Meta property="og:site_name" content="Atelier Créaline" />
+        <Meta property="og:type" content="website" />
 
         // content for this welcome page
         <Router>

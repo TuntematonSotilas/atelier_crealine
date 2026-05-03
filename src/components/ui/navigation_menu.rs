@@ -159,6 +159,10 @@ pub fn NavigationMenu(children: Children, #[prop(optional, into)] class: String)
                             document.addEventListener('keydown', (e) => {{
                                 if (e.key === 'Escape') closeAll(0);
                             }});
+
+                            navigation.addEventListener("navigate", e => {{
+                                closeAll(0);
+                            }});
                         }};
 
                         if (document.readyState === 'loading') {{

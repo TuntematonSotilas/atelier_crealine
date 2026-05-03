@@ -30,7 +30,7 @@ pub fn NavMenu() -> impl IntoView {
                     <NavigationMenuItem>
                         <NavigationMenuTrigger>"Services"</NavigationMenuTrigger>
                         <NavigationMenuContent>
-                            <ul class="grid gap-3 p-0 md:grid-cols-2 w-[400px] md:w-[500px] lg:w-[600px]">
+                            <ul class="grid gap-3 p-0 md:grid-cols-2 md:w-[500px] lg:w-[600px]">
                                 <ListItem href="/services/creatifs-pour-tous" title="Ateliers créatifs pour tous"/>
                                 <ListItem href="/services/parents-enfants" title="Ateliers parents-enfants"/>
                                 <ListItem href="/services/aperos-creatifs" title="Apéros créatifs (adultes)"/>
@@ -43,7 +43,7 @@ pub fn NavMenu() -> impl IntoView {
                     <NavigationMenuItem class="block md:hidden">
                         <NavigationMenuTrigger>Infos</NavigationMenuTrigger>
                         <NavigationMenuContent>
-                            <ul class="grid gap-3 p-0 md:grid-cols-2 w-[400px] md:w-[500px] lg:w-[600px]">
+                            <ul class="grid gap-3 p-0 md:grid-cols-2 md:w-[500px] lg:w-[600px]">
                                 <ListItem href="/qui-suis-je" title="Qui suis-je"/>
                                 <ListItem href="/newsletter" title="Newsletter"/>
                             </ul>
