@@ -17,12 +17,14 @@ fn ListItem(#[prop(into)] href: String, #[prop(into)] title: String) -> impl Int
 pub fn NavMenu() -> impl IntoView {
         
     view! {
-        <div class="flex justify-center items-start py-8 min-h-[350px]">
+        <div class="flex justify-center items-start py-8">
             <NavigationMenu>
                 <NavigationMenuList>
 
                     <NavigationMenuItem>
-                        <img src="/assets/icon.svg" alt="Logo" class="w-8 h-8 mr-2"/>
+                        <NavigationMenuLink href="/" class=navigation_menu_trigger_style()>
+                            <img src="/assets/icon.svg" alt="Logo" class="w-8 h-8"/>
+                        </NavigationMenuLink>
                     </NavigationMenuItem>
 
                     <NavigationMenuItem>
@@ -38,13 +40,23 @@ pub fn NavMenu() -> impl IntoView {
                         </NavigationMenuContent>
                     </NavigationMenuItem>
 
-                    <NavigationMenuItem>
+                    <NavigationMenuItem class="block md:hidden">
+                        <NavigationMenuTrigger>Infos</NavigationMenuTrigger>
+                        <NavigationMenuContent>
+                            <ul class="grid gap-3 p-0 md:grid-cols-2 w-[400px] md:w-[500px] lg:w-[600px]">
+                                <ListItem href="/qui-suis-je" title="Qui suis-je"/>
+                                <ListItem href="/newsletter" title="Newsletter"/>
+                            </ul>
+                        </NavigationMenuContent>
+                    </NavigationMenuItem>
+                    
+                    <NavigationMenuItem class="hidden md:block">
                         <NavigationMenuLink class=navigation_menu_trigger_style() href="/qui-suis-je">
                             "Qui suis-je"
                         </NavigationMenuLink>
                     </NavigationMenuItem>
 
-                     <NavigationMenuItem>
+                     <NavigationMenuItem class="hidden md:block">
                         <NavigationMenuLink class=navigation_menu_trigger_style() href="/newsletter">
                             "Newsletter"
                         </NavigationMenuLink>

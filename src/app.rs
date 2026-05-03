@@ -32,7 +32,7 @@ pub fn App() -> impl IntoView {
         // content for this welcome page
         <Router>
             <NavMenu/>
-            <main>
+            <main class="container mx-auto px-4 py-8">
                 <Routes fallback=move || "Not found.">
                     <Route path=StaticSegment("") view=HomePage/>
                     <Route path=path!("/services/hors-les-murs") view=AteliersHorsLesMurs/>

@@ -198,13 +198,15 @@ pub fn NavigationMenuList(children: Children, #[prop(optional, into)] class: Str
 /// (with `position: absolute`) escapes to the <nav> root, making all panels
 /// appear at the same position → shared viewport effect.
 #[component]
-pub fn NavigationMenuItem(children: Children) -> impl IntoView {
+pub fn NavigationMenuItem(children: Children, #[prop(optional, into)] class: String) -> impl IntoView {
     let item_id = use_random_id_for("navitem");
     let item_ctx = NavigationMenuItemContext { item_id };
 
     view! {
         <Provider value=item_ctx>
-            <li data-name="NavigationMenuItem">{children()}</li>
+            <li data-name="NavigationMenuItem" class=class>
+                {children()}
+            </li>
         </Provider>
     }
 }

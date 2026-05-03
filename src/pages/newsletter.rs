@@ -7,7 +7,7 @@ pub fn NewsletterPage() -> impl IntoView {
     let submitted = RwSignal::new(false);
     
     view! {
-        <div class="newsletter-page">
+        <div>
             <h1>"Notre Newsletter"</h1>
             
             <div class="newsletter-content">
