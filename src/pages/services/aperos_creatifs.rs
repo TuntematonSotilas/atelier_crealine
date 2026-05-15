@@ -1,11 +1,11 @@
 use leptos::prelude::*;
 
-/// Renders the "Apéros Créatifs (Adultes)" page.
+/// Renders the "apéros créatifs (adultes)" page.
 #[component]
 pub fn AperosCreatifs() -> impl IntoView {
     view! {
         <div>
-            <h1>"Apéros Créatifs (Adultes)"</h1>
+            <h1>"Apéros créatifs (adultes)"</h1>
         </div>
     }
 }

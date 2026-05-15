@@ -14,6 +14,7 @@ use crate::pages::services::en_institution::AteliersEnInstitution;
 use crate::pages::services::aperos_creatifs::AperosCreatifs;
 use crate::pages::services::ateliers_pour_tous::AteliersCreatifsPourTous;
 use crate::pages::services::parents_enfants::AteliersParentsEnfants;
+use crate::pages::services::individuels::AteliersIndividuels;
 use crate::components::blocks::nav_menu::NavMenu;
 use crate::components::blocks::footer_block::FooterBlock;
 
@@ -49,6 +50,7 @@ pub fn App() -> impl IntoView {
                     <Route path=path!("/services/parents-enfants") view=AteliersParentsEnfants/>
                     <Route path=path!("/services/creatifs-pour-tous") view=AteliersCreatifsPourTous/>
                     <Route path=path!("/services/aperos-creatifs") view=AperosCreatifs/>
+                    <Route path=path!("/services/individuels") view=AteliersIndividuels/>
                     <Route path=path!("/qui-suis-je") view=QuiSuisJePage/>
                     <Route path=path!("/mentions-legales") view=MentionsLegales/>
                     <Route path=path!("/newsletter") view=NewsletterPage/>

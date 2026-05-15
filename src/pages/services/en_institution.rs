@@ -1,11 +1,11 @@
 use leptos::prelude::*;
 
-/// Renders the "Ateliers en Institution" page.
+/// Renders the "Ateliers en institution" page.
 #[component]
 pub fn AteliersEnInstitution() -> impl IntoView {
     view! {
         <div>
-            <h1>"Ateliers en Institution"</h1>
+            <h1>"Ateliers en institution"</h1>
         </div>
     }
 }

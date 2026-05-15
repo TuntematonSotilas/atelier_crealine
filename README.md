@@ -13,14 +13,20 @@ Live here : https://atelier-crealine.onrender.com
 
     cargo leptos watch
 
-## Docs
+## Lint 
 
-* Leptos : https://leptos.dev
-* Rust-UI :  https://rust-ui.com
+    cargo clippy
 
 ## Docker
 
 * Build : `docker build . -t atelier_crealine`
 * Run : `docker run -p 3000:8080 atelier_crealine`
 * Test : http://localhost:3000
+
+
+## Docs
+
+* Leptos : https://leptos.dev
+* Rust-UI :  https://rust-ui.com
+
 

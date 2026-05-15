@@ -36,6 +36,7 @@ pub fn NavMenu() -> impl IntoView {
                                 <ListItem href="/services/aperos-creatifs" title="Apéros créatifs (adultes)"/>
                                 <ListItem href="/services/hors-les-murs" title="Ateliers hors les murs"/>
                                 <ListItem href="/services/en-institution" title="Ateliers en institution"/>
+                                <ListItem href="/services/individuels" title="Ateliers individuels"/>
                             </ul>
                         </NavigationMenuContent>
                     </NavigationMenuItem>
