@@ -31,6 +31,7 @@
   --sidebar-primary-foreground: oklch(0.984 0.019 200.873);
   --destructive: oklch(0.577 0.245 27.325);
   --gray-text: oklch(38.593% 0.01349 211.239);
+  --gray-text-light: oklch(84.437% 0.0305 207.216);
 }
 
 .dark {
@@ -62,6 +63,7 @@
   --sidebar-primary-foreground: oklch(0.302 0.056 229.695);
   --destructive: oklch(0.704 0.191 22.216);
   --gray-text: oklch(0.723 0.014 214.4);
+  --gray-text-light: oklch(84.437% 0.0305 207.216);
 }
 
 @theme {

@@ -45,9 +45,9 @@ pub fn ServiceBlock(
         .into_iter()
         .map(|session| view! { 
             <div class="p-4 border-l-4 border-primary bg-gradient-to-r from-primary/10 dark:from-primary/20 to-transparent rounded-r-lg hover:shadow-md dark:hover:shadow-primary/20 transition-shadow">
-                <div class="font-semibold text-gray-900 dark:text-white">{session.date}</div>
-                <div class="text-sm text-[var(--gray-text)] mt-1">{"Thème : "}<span class="text-primary dark:text-secondary">{session.theme}</span></div>
-                <div class="text-sm font-medium text-gray-900 dark:text-white mt-2">{session.price}{"€"}</div>
+                <div class="font-semibold text-[var(--gray-text)]">{session.date}</div>
+                <div class="text-sm text-[var(--gray-text)] mt-1">"Thème : "{session.theme}</div>
+                <div class="text-sm font-medium mt-2">"Prix : "{session.price}{"€"}</div>
             </div> }.into_any())
         .collect::<Vec<_>>();
 
@@ -56,8 +56,8 @@ pub fn ServiceBlock(
             <div class="flex flex-col lg:flex-row gap-0">
 
                 {/* Image Section */}
-                <div class="lg:w-80 flex-shrink-0 bg-[var(--primary)]" 
-                    style={format!("background-repeat: repeat; background-size: 5em; background-image: url('{}');", image)}>
+                <div class="lg:w-64 flex-shrink-0 bg-[var(--primary)]" 
+                    style={format!("background-repeat: repeat; background-size: 4em; background-image: url('{}');", image)}>
                 </div>
 
                 {/* Content Section */}
@@ -71,16 +71,16 @@ pub fn ServiceBlock(
                     {/* Info Cards */}
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                         <div class="p-4 bg-[var(--primary)] rounded-lg border border-slate-200 dark:border-slate-700">
-                            <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Horaire</div>
+                            <div class="text-xs font-semibold text-[var(--gray-text-light)] uppercase tracking-wide">Horaire</div>
                             <div class="text-slate-900 dark:text-white font-medium mt-1">{schedule}</div>
                         </div>
                         <div class="p-4 bg-[var(--primary)] rounded-lg border border-slate-200 dark:border-slate-700">
-                            <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Âge requis</div>
+                            <div class="text-xs font-semibold text-[var(--gray-text-light)] uppercase tracking-wide">Âge requis</div>
                             <div class="text-slate-900 dark:text-white font-medium mt-1">{age}</div>
                         </div>
                         <div class="p-4 bg-[var(--primary)] rounded-lg border border-slate-200 dark:border-slate-700 md:col-span-2">
-                            <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Lieu</div>
-                            <a href={place_link} target="_blank" rel="noreferrer" class="text-slate-900 dark:text-white font-medium mt-1 inline-flex items-center gap-2 hover:text-primary dark:hover:text-secondary transition-colors">
+                            <div class="text-xs font-semibold text-[var(--gray-text-light)] uppercase tracking-wide">Lieu</div>
+                            <a href={place_link} target="_blank" rel="noreferrer" class="text-slate-900 dark:text-white font-medium mt-1 inline-flex items-center gap-2 hover:text-secondary transition-colors">
                                 <MapPin class="w-4 h-4 flex-shrink-0" />
                                 <span class="underline">{place}</span>
                             </a>
