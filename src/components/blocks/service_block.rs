@@ -38,7 +38,7 @@ pub fn ServiceBlock(
                 </div>
                 <p class="text-sm text-[var(--gray-text)] pt-0.5">{step}</p>
             </div>
-        })
+        }.into_any())
         .collect::<Vec<_>>();
 
     let sessions_view = sessions
@@ -48,7 +48,7 @@ pub fn ServiceBlock(
                 <div class="font-semibold text-gray-900 dark:text-white">{session.date}</div>
                 <div class="text-sm text-[var(--gray-text)] mt-1">{"Thème : "}<span class="text-primary dark:text-secondary">{session.theme}</span></div>
                 <div class="text-sm font-medium text-gray-900 dark:text-white mt-2">{session.price}{"€"}</div>
-            </div> })
+            </div> }.into_any())
         .collect::<Vec<_>>();
 
     view! {
@@ -112,5 +112,5 @@ pub fn ServiceBlock(
                 </div>
             </div>
         </article>
-    }
+    }.into_any()
 }

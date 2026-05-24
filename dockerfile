@@ -16,7 +16,7 @@ RUN cargo install --locked cargo-leptos
 
 RUN npm i
 
-RUN cargo leptos build --release -vv
+RUN cargo leptos build --release
 
 FROM rust:1.95.0-alpine3.22 AS runner
 
