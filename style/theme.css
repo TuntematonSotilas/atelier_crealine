@@ -32,6 +32,8 @@
   --destructive: oklch(0.577 0.245 27.325);
   --gray-text: oklch(38.593% 0.01349 211.239);
   --gray-text-light: oklch(84.437% 0.0305 207.216);
+  --border: oklch(84.437% 0.0305 207.216);
+  --shadow: -0.5em 0.5rem 2rem oklch(81.076% 0.01646 216.963 / 0.751);
 }
 
 .dark {
@@ -64,6 +66,8 @@
   --destructive: oklch(0.704 0.191 22.216);
   --gray-text: oklch(0.723 0.014 214.4);
   --gray-text-light: oklch(84.437% 0.0305 207.216);
+  --border: oklch(30.341% 0.01711 214.766);
+  --shadow: -0.5em 0.5rem 2rem oklch(45.366% 0.08426 222.636 / 0.773);
 }
 
 @theme {

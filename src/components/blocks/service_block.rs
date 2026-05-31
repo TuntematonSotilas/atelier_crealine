@@ -52,7 +52,7 @@ pub fn ServiceBlock(
         .collect::<Vec<_>>();
 
     view! {
-        <article class="rounded-xl shadow-lg shadow-slate-500/40 bg-[var(--card)] text-[var(--card-foreground)] overflow-hidden">
+        <article class="rounded-xl border border-(--border) shadow-(var(--shadow)) bg-[var(--card)] text-[var(--card-foreground)] overflow-hidden">
             <div class="flex flex-col lg:flex-row gap-0">
 
                 {/* Image Section */}
