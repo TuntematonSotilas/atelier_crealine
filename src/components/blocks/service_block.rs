@@ -56,8 +56,7 @@ pub fn ServiceBlock(
             <div class="flex flex-col lg:flex-row gap-0">
 
                 {/* Image Section */}
-                <div class="lg:w-64 flex-shrink-0 bg-[var(--primary)]" 
-                    style={format!("background-repeat: repeat; background-size: 4em; background-image: url('{}');", image)}>
+                <div class="lg:w-[1rem] flex-shrink-0 bg-[var(--primary)]/50">
                 </div>
 
                 {/* Content Section */}
