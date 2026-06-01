@@ -31,7 +31,7 @@ impl ThemeMode {
         Effect::new(move |_| {
             let initial = Self::get_storage_state().unwrap_or(Self::prefers_dark_mode());
             theme_mode.state.set(initial);
-            Self::set_html_class(initial);
+            //Self::set_html_class(initial);
         });
 
         theme_mode

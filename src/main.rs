@@ -39,6 +39,17 @@ async fn main() -> std::io::Result<()> {
                                 <AutoReload options=leptos_options.clone() />
                                 <HydrationScripts options=leptos_options.clone()/>
                                 <MetaTags/>
+                                <script>
+                                    // Set the initial theme mode before the app loads to prevent flashes
+                                    (function() {
+                                        const stored = localStorage.getItem("darkmode");
+                                        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+                                        const darkMode = stored !== null ? JSON.parse(stored) : prefersDark;
+                                        if (darkMode) {
+                                            document.documentElement.classList.add("dark");
+                                        }
+                                    })();
+                                </script>
                             </head>
                             <body>
                                 <App/>
