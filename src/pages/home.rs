@@ -40,7 +40,8 @@ pub fn HomePage() -> impl IntoView {
                     <p class="text-sm leading-6">{review.comment}</p>
                 </div>
             </MarqueeRow>
-        })
+        }
+        .into_any())
         .collect::<Vec<_>>();
 
     view! {

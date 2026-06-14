@@ -17,6 +17,10 @@ Live here : https://atelier-crealine.onrender.com
 
     cargo clippy
 
+## Build
+
+    cargo leptos build --release
+    
 ## Docker
 
 * Build : `docker build . -t atelier_crealine`
