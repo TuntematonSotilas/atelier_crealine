@@ -90,3 +90,7 @@
     opacity: 0.9;
   }
 }
+
+.no-tooltips {
+    pointer-events: none;
+}

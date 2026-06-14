@@ -1,5 +1,4 @@
 use leptos::prelude::*;
-
 use crate::components::blocks::service_block::{ServiceBlock, Session};
 
 /// Renders the "Ateliers créatifs pour tous" page.
@@ -8,7 +7,6 @@ pub fn AteliersCreatifsPourTous() -> impl IntoView {
 
     let title = "Ateliers créatifs pour tous";
     let desc = "Découvrez nos ateliers créatifs conçus pour tous les âges et tous les niveaux.";
-    let img = "/assets/flower.svg";
     let schedule = "Tous les dimanches, de 14h à 17h";
     let place = "Atelier Créaline, 5 Rue Marc Seguin, 42110 Feurs";
     let age = "À partir de 13 ans";
@@ -35,11 +33,14 @@ pub fn AteliersCreatifsPourTous() -> impl IntoView {
             price: "65".to_string(),
         },
     ];
-
+    let pics = vec![
+        "/assets/fake1.png".to_string(),
+        "/assets/fake2.png".to_string(),
+    ];
     view! {
         <ServiceBlock title=title 
             description=desc
-            image=img
+            pictures=pics
             is_register=true
             schedule=schedule
             place=place

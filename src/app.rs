@@ -4,25 +4,19 @@ use leptos_router::{
     StaticSegment, WildcardSegment, components::{Route, Router, Routes}, path
 };
 
-use crate::{components::hooks::use_theme_mode::ThemeMode, pages::mentions_legales::MentionsLegales};
-use crate::pages::home::HomePage;
-use crate::pages::not_found::NotFound;
-use crate::pages::qui_suis_je::QuiSuisJePage;
-use crate::pages::newsletter::NewsletterPage;
-use crate::pages::services::hors_les_murs::AteliersHorsLesMurs;
-use crate::pages::services::en_institution::AteliersEnInstitution;
-use crate::pages::services::aperos_creatifs::AperosCreatifs;
-use crate::pages::services::ateliers_pour_tous::AteliersCreatifsPourTous;
-use crate::pages::services::parents_enfants::AteliersParentsEnfants;
-use crate::pages::services::individuels::AteliersIndividuels;
-use crate::components::blocks::nav_menu::NavMenu;
-use crate::components::blocks::footer_block::FooterBlock;
+use crate::components::hooks::use_theme_mode::ThemeMode;
+use crate::components::ui::carousel::CarouselContext;
+use crate::components::blocks::{NavMenu, FooterBlock};
+use crate::pages::*;
 
 #[component]
 pub fn App() -> impl IntoView {
     // Provides context that manages stylesheets, titles, meta tags, etc.
     provide_meta_context();
+    // Provides context for theme mode management
     provide_context(ThemeMode::init());
+    // Provides context for carousel functionality
+    provide_context(CarouselContext::init());
 
     view! {
         // injects a stylesheet into the document <head>
@@ -42,7 +36,7 @@ pub fn App() -> impl IntoView {
         // content for this welcome page
         <Router>
             <NavMenu/>
-            <main class="container mx-auto px-4 py-8 min-h-[72vh]">
+            <main class="container mx-auto px-4 py-4 min-h-[72vh]">
                 <Routes fallback=move || "Not found.">
                     <Route path=StaticSegment("") view=HomePage/>
                     <Route path=path!("/services/hors-les-murs") view=AteliersHorsLesMurs/>

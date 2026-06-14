@@ -1,7 +1,6 @@
 use icons::MapPin;
 use leptos::prelude::*;
-
-use crate::components::ui::button::Button;
+use crate::components::ui::{button::Button, carousel::*};
 
 pub struct Session {
     pub date: String,
@@ -13,7 +12,6 @@ pub struct Session {
 pub fn ServiceBlock(
     #[prop(into, optional, default = "Title".to_string())] title: String,
     #[prop(into, optional, default = "Description".to_string())] description: String,
-    #[prop(into, optional, default = "".to_string())] image: String,
     #[prop(into, optional, default = true)] is_register: bool,
     #[prop(into, optional, default = "".to_string())] schedule: String,
     #[prop(into, optional, default = "".to_string())] place: String,
@@ -21,6 +19,7 @@ pub fn ServiceBlock(
     #[prop(into, optional, default = "".to_string())] place_link: String,
     #[prop(optional, default = Vec::new())] steps: Vec<String>,
     #[prop(optional, default = Vec::new())] sessions: Vec<Session>,
+    #[prop(into, optional, default = Vec::new())] pictures: Vec<String>,
 ) -> impl IntoView {
 
     let btn_txt = match is_register {
@@ -51,23 +50,32 @@ pub fn ServiceBlock(
             </div> }.into_any())
         .collect::<Vec<_>>();
 
+    let carousel_view = pictures
+        .into_iter()
+        .map(|step| view! { 
+            <CarouselItem>
+                <img src={step} />
+            </CarouselItem>
+        }.into_any())
+        .collect::<Vec<_>>();
+
     view! {
         <article class="rounded-xl border border-(--border) shadow-(var(--shadow)) bg-[var(--card)] text-[var(--card-foreground)] overflow-hidden">
             <div class="flex flex-col lg:flex-row gap-0">
 
-                {/* Image Section */}
+                /* Left Border */
                 <div class="lg:w-[1rem] flex-shrink-0 bg-[var(--primary)]/50">
                 </div>
 
-                {/* Content Section */}
+                /* Content Section */
                 <div class="flex-1 p-6 lg:p-8 flex flex-col">
-                    {/* Header */}
+                    /* Header */
                     <div class="mb-6">
                         <h3 class="text-2xl lg:text-3xl font-bold mb-3">{title.clone()}</h3>
                         <p class="text-base leading-relaxed">{description}</p>
                     </div>
 
-                    {/* Info Cards */}
+                    /* Info Cards */
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                         <div class="p-4 bg-[var(--primary)] rounded-lg border border-slate-200 dark:border-slate-700">
                             <div class="text-xs font-semibold text-[var(--gray-text-light)] uppercase tracking-wide">Horaire</div>
@@ -86,7 +94,18 @@ pub fn ServiceBlock(
                         </div>
                     </div>
 
-                    {/* Steps */}
+                    /* Carousel */
+                    <div class="flex justify-center mb-6">
+                        <Carousel class="w-80">
+                            <CarouselContent>
+                                {carousel_view}
+                            </CarouselContent>
+                            <CarouselPrevious />
+                            <CarouselNext />
+                        </Carousel>
+                    </div>
+
+                    /* Steps */
                     <div class="mb-6 pb-6 border-b border-gray-200 dark:border-slate-700">
                         <h4 class="text-lg font-bold mb-4">{"Déroulement de l'atelier"}</h4>
                         <div class="space-y-3">
@@ -94,7 +113,7 @@ pub fn ServiceBlock(
                         </div>
                     </div>
             
-                    {/* Sessions */}
+                    /* Sessions */
                     <div class="mb-6">
                         <h4 class="text-lg font-bold mb-4">{"Prochaines séances"}</h4>
                         <div class="space-y-3">
@@ -102,7 +121,7 @@ pub fn ServiceBlock(
                         </div>
                     </div>
                         
-                    {/* Register Button */}
+                    /* Register Button */
                     <div class="mt-auto">
                         <Button class="w-full md:w-auto">
                             {btn_txt}
