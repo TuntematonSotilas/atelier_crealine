@@ -7,14 +7,14 @@ edition = "2021"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-actix-files = { version = "0.6", optional = true }
-actix-web = { version = "4", optional = true, features = ["macros"] }
+actix-files = { version = "0.6.10", optional = true, default-features = false }
+actix-web = { version = "4.13.0", optional = true, default-features = false, features = ["macros", "compress-gzip", "compress-zstd"] }
 console_error_panic_hook = "0.1"
 http = { version = "1.3.1", optional = true }
-leptos = { version = "0.8.2" }
-leptos_meta = { version = "0.8.2" }
-leptos_actix = { version = "0.8.2", optional = true }
-leptos_router = { version = "0.8.2" }
+leptos = { version = "0.8.7" }
+leptos_meta = { version = "0.8.6" }
+leptos_actix = { version = "0.8.7", optional = true, default-features = false }
+leptos_router = { version = "0.8.7" }
 leptos_ui = "0.3.22"
 wasm-bindgen = "0.2.106"
 web-sys = { version = "0.3.97" , features = ["MediaQueryList", "Window", "Storage"] }
