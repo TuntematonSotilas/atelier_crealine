@@ -75,34 +75,37 @@ pub fn ServiceBlock(
                         <p class="text-base leading-relaxed">{description}</p>
                     </div>
 
-                    /* Info Cards */
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                        <div class="p-4 bg-[var(--primary)] rounded-lg border border-slate-200 dark:border-slate-700">
-                            <div class="text-xs font-semibold text-[var(--gray-text-light)] uppercase tracking-wide">Horaire</div>
-                            <div class="text-slate-900 dark:text-white font-medium mt-1">{schedule}</div>
+                    /* Info Cards + Carousel */
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                        /* Info Cards */
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="p-4 bg-[var(--primary)] rounded-lg border border-slate-200 dark:border-slate-700">
+                                <div class="text-xs font-semibold text-[var(--gray-text-light)] uppercase tracking-wide">Horaire</div>
+                                <div class="text-slate-900 dark:text-white font-medium mt-1">{schedule}</div>
+                            </div>
+                            <div class="p-4 bg-[var(--primary)] rounded-lg border border-slate-200 dark:border-slate-700">
+                                <div class="text-xs font-semibold text-[var(--gray-text-light)] uppercase tracking-wide">Âge requis</div>
+                                <div class="text-slate-900 dark:text-white font-medium mt-1">{age}</div>
+                            </div>
+                            <div class="p-4 bg-[var(--primary)] rounded-lg border border-slate-200 dark:border-slate-700 md:col-span-2">
+                                <div class="text-xs font-semibold text-[var(--gray-text-light)] uppercase tracking-wide">Lieu</div>
+                                <a href={place_link} target="_blank" rel="noreferrer" class="text-slate-900 dark:text-white font-medium mt-1 inline-flex items-center gap-2 hover:text-secondary transition-colors">
+                                    <MapPin class="w-4 h-4 flex-shrink-0" />
+                                    <span class="underline">{place}</span>
+                                </a>
+                            </div>
                         </div>
-                        <div class="p-4 bg-[var(--primary)] rounded-lg border border-slate-200 dark:border-slate-700">
-                            <div class="text-xs font-semibold text-[var(--gray-text-light)] uppercase tracking-wide">Âge requis</div>
-                            <div class="text-slate-900 dark:text-white font-medium mt-1">{age}</div>
-                        </div>
-                        <div class="p-4 bg-[var(--primary)] rounded-lg border border-slate-200 dark:border-slate-700 md:col-span-2">
-                            <div class="text-xs font-semibold text-[var(--gray-text-light)] uppercase tracking-wide">Lieu</div>
-                            <a href={place_link} target="_blank" rel="noreferrer" class="text-slate-900 dark:text-white font-medium mt-1 inline-flex items-center gap-2 hover:text-secondary transition-colors">
-                                <MapPin class="w-4 h-4 flex-shrink-0" />
-                                <span class="underline">{place}</span>
-                            </a>
-                        </div>
-                    </div>
 
-                    /* Carousel */
-                    <div class="flex justify-center mb-6">
-                        <Carousel class="w-80">
-                            <CarouselContent>
-                                {carousel_view}
-                            </CarouselContent>
-                            <CarouselPrevious />
-                            <CarouselNext />
-                        </Carousel>
+                        /* Carousel */
+                        <div class="flex justify-center items-center px-12">
+                            <Carousel class="w-full max-w-xs">
+                                <CarouselContent>
+                                    {carousel_view}
+                                </CarouselContent>
+                                <CarouselPrevious />
+                                <CarouselNext />
+                            </Carousel>
+                        </div>
                     </div>
 
                     /* Steps */
