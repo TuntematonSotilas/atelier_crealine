@@ -5,20 +5,16 @@ RUN apk update && \
     apk add --no-cache bash curl npm libc-dev binaryen perl make
 
 RUN npm install -g sass
+# Add the WASM target
 RUN rustup target add wasm32-unknown-unknown
 
 WORKDIR /work
-
-# Copy only manifest files first to cache dependency resolution and compilation
-COPY Cargo.toml ./
-RUN cargo install --locked cargo-leptos
-RUN cargo fetch
-
-COPY package.json package-lock.json ./
-RUN npm ci
-
-# Copy the rest of the sources and build
 COPY . .
+
+RUN cargo install --locked cargo-leptos
+
+RUN npm i
+
 RUN cargo leptos build --release
 
 FROM rust:1.95.0-alpine3.22 AS runner
