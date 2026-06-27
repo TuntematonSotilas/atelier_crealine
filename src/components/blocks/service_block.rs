@@ -8,18 +8,25 @@ pub struct Session {
     pub price: String,
 }
 
+pub struct DetPerAge {
+    pub prefix: String,
+    pub age: String,
+    pub description: String,
+}
+
 #[component]
 pub fn ServiceBlock(
-    #[prop(into, optional, default = "Title".to_string())] title: String,
-    #[prop(into, optional, default = "Description".to_string())] description: String,
-    #[prop(into, optional, default = true)] is_register: bool,
-    #[prop(into, optional, default = "".to_string())] schedule: String,
-    #[prop(into, optional, default = "".to_string())] place: String,
-    #[prop(into, optional, default = "".to_string())] age: String,
-    #[prop(into, optional, default = "".to_string())] place_link: String,
-    #[prop(optional, default = Vec::new())] steps: Vec<String>,
-    #[prop(optional, default = Vec::new())] sessions: Vec<Session>,
-    #[prop(into, optional, default = Vec::new())] pictures: Vec<String>,
+    #[prop(into)] title: String,
+    #[prop(into)] description: String,
+    #[prop(optional, default = Vec::new())] details_per_age: Vec<DetPerAge>,
+    #[prop(into)] is_register: bool,
+    #[prop(into)] schedule: String,
+    #[prop(into)] place: String,
+    #[prop(into)] age: String,
+    #[prop(into)] place_link: String,
+    #[prop(optional)] steps: Vec<String>,
+    #[prop(optional)] sessions: Vec<Session>,
+    #[prop(into)] pictures: Vec<String>,
 ) -> impl IntoView {
 
     let btn_txt = match is_register {
@@ -59,6 +66,17 @@ pub fn ServiceBlock(
         }.into_any())
         .collect::<Vec<_>>();
 
+    let details_per_age_view = details_per_age
+        .into_iter()
+        .map(|d| view! {
+            <li class="text-sm">
+                {d.prefix}
+                <span class="font-semibold">{d.age}</span>
+                {d.description}
+            </li>
+        }.into_any())
+        .collect::<Vec<_>>();
+
     view! {
         <article class="rounded-xl border border-(--border) shadow-(var(--shadow)) bg-[var(--card)] text-[var(--card-foreground)] overflow-hidden">
             <div class="flex flex-col lg:flex-row gap-0">
@@ -73,6 +91,9 @@ pub fn ServiceBlock(
                     <div class="mb-6">
                         <h3 class="text-2xl lg:text-3xl font-bold mb-3">{title.clone()}</h3>
                         <p class="text-base leading-relaxed">{description}</p>
+                        <ul class="mt-4 ml-4 list-disc space-y-2">
+                            {details_per_age_view}
+                        </ul>
                     </div>
 
                     /* Info Cards */
@@ -106,7 +127,7 @@ pub fn ServiceBlock(
                     </div>
 
                     /* Steps */
-                    <div class="mb-6 pb-6 border-b border-gray-200 dark:border-slate-700">
+                    <div class="mb-6">
                         <h4 class="text-lg font-bold mb-4">{"Déroulement de l'atelier"}</h4>
                         <div class="space-y-3">
                             {steps_view}
