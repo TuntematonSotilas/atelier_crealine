@@ -26,22 +26,27 @@ pub fn HomePage() -> impl IntoView {
 
     let reviews_view = reviews
         .into_iter()
-        .map(|review| view! { 
-            <MarqueeRow class="p-4 bg-[var(--card)] text-[var(--card-foreground)] rounded-r-lg">
-                <div class="flex flex-col gap-3">
-                    <div class="flex items-center gap-3">
-                        <span class="font-semibold">{review.name}</span>
-                        <div class="flex gap-1">
-                            { (0..review.stars).map(|_| view! { 
-                                <img class="w-5 h-5" src="assets/star.svg" alt="Star" /> 
-                            }.into_any()).collect::<Vec<_>>() }
+        .map(|review| {
+            let stars = (0..review.stars)
+                .map(|_| {
+                    view! {
+                        <img class="w-5 h-5" src="assets/star.svg" alt="Star" />
+                    }
+                }.into_any())
+                .collect::<Vec<_>>();
+
+            view! {
+                <MarqueeRow class="p-4 bg-[var(--card)] text-[var(--card-foreground)] rounded-r-lg">
+                    <div class="flex flex-col gap-3">
+                        <div class="flex items-center gap-3">
+                            <span class="font-semibold">{review.name}</span>
+                            <div class="flex gap-1">{stars}</div>
                         </div>
+                        <p class="text-sm leading-6">{review.comment}</p>
                     </div>
-                    <p class="text-sm leading-6">{review.comment}</p>
-                </div>
-            </MarqueeRow>
-        }
-        .into_any())
+                </MarqueeRow>
+            }
+        })
         .collect::<Vec<_>>();
 
     view! {
