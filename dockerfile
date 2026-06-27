@@ -10,12 +10,12 @@ RUN rustup target add wasm32-unknown-unknown
 WORKDIR /work
 
 # Copy only manifest files first to cache dependency resolution and compilation
-COPY Cargo.toml Cargo.lock ./
+COPY Cargo.toml ./
 RUN cargo install --locked cargo-leptos
 RUN cargo fetch --locked
 
 COPY package.json package-lock.json ./
-RUN npm ci
+RUN npm install
 
 # Copy the rest of the sources and build
 COPY . .
